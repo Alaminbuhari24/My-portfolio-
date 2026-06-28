@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #f3f4f6;
+    /* Uses background.jpg cleanly fixed across your workspace background */
+    background: linear-gradient(rgba(17, 24, 39, 0.85), rgba(17, 24, 39, 0.85)), url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 260px;
+    background: rgba(31, 41, 55, 0.65);
+    backdrop-filter: blur(15px);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    z-index: 100;
+}
+
+.profile-logo {
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-logo h2 {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    background: linear-gradient(to right, #3b82f6, #60a5fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 1rem 0;
+}
+
+.nav-item {
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    color: #9ca3af;
+    transition: all 0.3s ease;
+}
+
+.nav-item i {
+    width: 20px;
+    font-size: 1.1rem;
+}
+
+.nav-item:hover, .nav-item.active {
+    color: #ffffff;
+    background: rgba(59, 130, 246, 0.15);
+    border-left: 4px solid #3b82f6;
+}
+
+/* Content Layout System */
+.content-container {
+    margin-left: 260px;
+    flex-grow: 1;
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Glassmorphism Framework for individual Pages */
+.portfolio-page {
+    display: none;
+    width: 100%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.portfolio-page.active {
+    display: block;
+}
+
+h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #3b82f6;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+/* Page Components styling */
+.highlight { color: #3b82f6; }
+.subtitle { font-size: 1.3rem; color: #9ca3af; margin: 0.5rem 0 1.5rem 0; }
+
+.btn {
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: background 0.2s;
+}
+.btn:hover { background: #2563eb; }
+
+/* About Page layout grid */
+.about-grid { display: flex; gap: 2rem; align-items: center; }
+.about-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #3b82f6; }
+
+/* Skills Grid elements style */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+.skill-card { background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 8px; text-align: center; }
+.skill-card i { font-size: 2.5rem; color: #3b82f6; margin-bottom: 1rem; }
+
+/* Custom items layout lists */
+.tools-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
+.tool-tag { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); padding: 0.6rem 1.2rem; border-radius: 20px; font-weight: 500; display: flex; align-items: center; gap: 0.5rem; }
+
+.project-card, .timeline-item, .testimonial-block { background: rgba(0,0,0,0.2); padding: 2rem; border-radius: 10px; border-left: 4px solid #3b82f6; }
+.project-tech { font-style: italic; color: #9ca3af; font-size: 0.9rem; margin: 0.5rem 0 1rem 0; }
+
+/* Cert Image structure */
+.cert-img-container { margin-top: 1.5rem; overflow: hidden; border-radius: 8px; max-width: 450px; }
+.cert-img { width: 100%; height: auto; display: block; border: 1px solid rgba(255,255,255,0.1); }
+
+.contact-methods { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+.contact-link { color: #f3f4f6; text-decoration: none; font-size: 1.1rem; display: flex; align-items: center; gap: 0.75rem; width: fit-content; transition: color 0.2s; }
+.contact-link:hover { color: #3b82f6; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsiveness overrides */
+@media (max-width: 768px) {
+    body { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; position: relative; }
+    .nav-links { display: flex; flex-wrap: wrap; justify-content: center; padding: 0.5rem; }
+    .nav-item { padding: 0.5rem 1rem; }
+    .content-container { margin-left: 0; padding: 1.5rem; }
+    .about-grid { flex-direction: column; text-align: center; }
+}
